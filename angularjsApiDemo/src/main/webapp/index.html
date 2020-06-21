@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CRUD Employee</title>
+<script type = "text/javascript"
+	src ="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-resource.js">
+</script>
+<script type = "text/javascript" src="app/app.js"></script>
+<script type = "text/javascript" src="app/general.controller.js"></script>
+<script type = "text/javascript" src="app/employee.service.js"></script>
+<script type = "text/javascript"
+	src ="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<link rel="stylesheeet" href="https://maxcdn.boostrapcdn.com/boostrap/3.3.7/css/boostrap.min.css">
+<link rel="stylesheeet" href="https://maxcdn.boostrapcdn.com/boostrap/3.3.7/css/boostrap-theme.min.css">
+<script type = "text/javascript"
+	src ="https://maxcdn.boostrapcdn.com/boostrap/3.3.7/js/boostrap.min.js">
+</script>
+</head>
+<body ng-app = "crudapp" ng-controller = "GeneralController">
+	<div class="panel-default">
+		<div class="panel-heading">
+			Employee
+		</div>
+		<form class="col=md-4" ng-submit="saveEmployee()">
+			<div class="form-group">
+				<lable for="EmployeeName">Employee Name</lable>
+				<input type="text" ng-model="employee.name" calss="form-control" id="employeeName">
+			</div>
+			<div class="form-group">
+				<lable for="EmployeeSalary">Salary</lable>
+				<input type="text" ng-model="employee.salary" calss="form-control" id="employeeSalary" placeholder="Salary">
+			</div>
+			<div class="form-group">
+				<lable for="EmployeeAge">Age</lable>
+				<input type="text" ng-model="employee.age" calss="form-control" id="employeeAge" placeholder="Age">
+			</div>
+			<div class="form-group">
+				<lable for="EmployeeProfileImage">Profile Image</lable>
+				<input type="text" ng-model="employee.profile_Image" calss="form-control" id="employeeProfileImage" placeholder="Profile Image Url">
+			</div>
+			
+			<button type="Submit" class="btn btn-defult">({buttonText})</button>
+			
+		</form>
+		
+		<div class="table-responsive col-md-6">
+			<table class="table table-striped">
+				<tr>
+					<th>Name</th>
+					<th>Salary</th>
+					<th>Age</th>
+					<th>Profile Image</th>
+				</tr>
+				<tr ng-repeat="employee in employees">
+					<td>({employee.name})</td>
+					<td>({employee.salary})</td>
+					<td>({employee.age})</td>
+					<td>({employee.profile_image})</td>
+					<td>
+						<button type=button" class="btn btn-danger" ng-click="updateEmployeeInit(employee)">
+							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+						</button>
+						<button type=button" class="btn btn-success" ng-click="deleteEmployee(employee)">
+							<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+						</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+	</div>
+</body>
+</html>
